@@ -1,0 +1,69 @@
+.header-left {
+  padding: 4.5rem 3rem 2.5rem 3rem;
+  background: $light-bg;
+  z-index: 2;
+  overflow: visible;
+  position: relative;
+  min-height: $header-height-desktop;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-size: 3.8rem;
+    font-weight: 470;
+    line-height: 1;
+    margin-bottom: 0;
+    color: $accent-yellow;
+    letter-spacing: -1px;
+  }
+  h2 {
+    font-size: 3.8rem;
+    font-weight: 550;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: $primary-dark;
+    letter-spacing: -1px;
+  }
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $primary-dark;
+    margin-top: 5px;
+  }
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background-color: $accent-yellow;
+    z-index: 10;
+  }
+  &::before {
+    width: 110px;
+    height: 5px;
+    top: 170px;
+    right: 100px;
+  }
+  &::after {
+    width: 90px;
+    height: 3px;
+    top: 100px;
+    background-color: #000;
+    right: 60px;
+  }
+}
+
+.header-photo {
+  position: absolute;
+  z-index: 5;
+  top: 80px;
+  right: calc($photo-width-desktop / -2);
+  width: $photo-width-desktop;
+  height: $photo-height-desktop;
+  border: 4px solid #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQP8AncCJpXr2_1mGTz68LYabsadQppMC2zg--4aDlD9RHVUW9I');
+  background-size: cover;
+  background-position: center;
+}

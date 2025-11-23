@@ -1,0 +1,178 @@
+/* --- ЦЕ ПРАВИЛЬНИЙ КОД ДЛЯ _left.scss --- */
+
+.left-col {
+  background: $primary-dark !important;
+  color: #fff;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  padding-bottom: $border-thickness !important;
+
+  > hr {
+    background-color: #000 !important;
+    height: 1px !important;
+    opacity: 1;
+    margin: 0 !important;
+    border: none;
+  }
+}
+
+.left-col-section {
+  padding: 2rem 3rem;
+  position: relative;
+  overflow: visible;
+  &:nth-last-child(1) {
+    margin-top: 70px;
+  }
+}
+
+/* ОСЬ ЦЕЙ БЛОК ВІДПОВІДАЄ ЗА "ПРОЗОРУ ЛІНІЮ"
+  Він створює псевдо-елемент ::after з напівпрозорим фоном
+*/
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  width: auto;
+  position: relative;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    height: 28px;
+    background-color: rgba(255, 255, 255, 0.08); // Ось цей фон
+    left: -3rem;
+    width: calc(100% + 6rem);
+  }
+}
+
+.section-title-line {
+  position: absolute; // <-- Фіксує положення лінії
+  left: -45px;       // <-- Налаштовує відступ від краю. Змінюйте це число, якщо лінія надто близько/далеко.
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 10px;
+  height: 1.5rem;
+  background: $accent-yellow; // Колір
+}
+
+.section-underline {
+  color: $accent-yellow !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  margin-left: 2px;
+}
+
+.education-text p, .experience-text p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+  color: $text-grey-light;
+}
+
+.education-item-title, .experience-item h6 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.exp-item {
+  .badge {
+    background: $accent-yellow !important;
+    color: $primary-dark !important;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .location {
+    color: $text-grey-light;
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-left: 0px;
+    vertical-align: middle;
+  }
+  p.description {
+    color: $text-grey-light !important;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+}
+
+.expertise-container {
+  padding: 0 20px;
+}
+
+.expertise-item {
+  width: 25%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  @include flex-center(column);
+}
+
+.expertise-circle {
+  @extend %circle-base;
+  width: 85px;
+  height: 85px;
+  position: relative;
+  margin: 0 auto 10px;
+  overflow: hidden;
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    circle {
+      fill: none;
+      stroke-width: 9;
+      r: 36;
+      cx: 42.5;
+      cy: 42.5;
+      transform-origin: center;
+      transform: rotate(90deg);
+      transition: stroke-dashoffset 0.5s ease-in-out;
+      stroke-linecap: round;
+    }
+    .circle-track {
+      stroke: $circle-progress-track;
+    }
+    .circle-progress {
+      stroke: $accent-yellow;
+      stroke-dasharray: $circle-circumference;
+      stroke-dashoffset: $circle-circumference;
+      filter: drop-shadow(0 0 1px black);
+    }
+  }
+  span {
+    color: #fff;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    padding: 0 5px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+  }
+
+  &.ps .circle-progress { stroke-dashoffset: $circle-circumference - ($circle-circumference * 0.90); }
+  &.ai .circle-progress { stroke-dashoffset: $circle-circumference - ($circle-circumference * 0.85); }
+  &.id .circle-progress { stroke-dashoffset: $circle-circumference - ($circle-circumference * 0.80); }
+  &.pp .circle-progress { stroke-dashoffset: $circle-circumference - ($circle-circumference * 0.75); }
+}

@@ -1,0 +1,131 @@
+/* 1. ІМПОРТ ЗМІННИХ ТА МІКСИНІВ
+  Вони не генерують CSS, лише стають доступними для інших файлів.
+*/
+@import 'variables';
+@import 'mixins';
+
+/* 2. ІМПОРТ КОМПОНЕНТІВ
+  Кожен з цих файлів згенерує CSS у кінцевому файлі.
+*/
+@import 'header';
+@import 'left';
+@import 'right';
+@import 'footer';
+
+/* 3. ГЛОБАЛЬНІ СТИЛІ
+*/
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; // Можна замінити на $body-bg, якщо додати у _variables.scss
+  overflow-x: hidden;
+  position: relative;
+}
+
+.resume-container {
+  max-width: 1100px;
+  margin: 20px auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  min-height: calc(100vh - 200px);
+  background: $light-bg;
+  border-radius: 0;
+  position: relative;
+  z-index: 10;
+  padding-left: $border-thickness;
+  padding-bottom: $border-thickness;
+
+  .row {
+    flex-grow: 1;
+  }
+}
+
+/* 4. АДАПТИВНІ МЕДІА-ЗАПИТИ
+  SCSS дозволяє вкладати медіа-запити всередині селекторів (див. _header.scss),
+  але для глобальних змін макета їх краще тримати тут.
+*/
+@media (max-width: 991.98px) {
+  .resume-container {
+    margin: 0;
+    box-shadow: none;
+    min-height: auto;
+    flex-direction: column;
+    padding-left: 0;
+    padding-bottom: 0;
+
+    &::after { // Стиль для жовтої смуги
+      display: none;
+    }
+  }
+
+  .left-col, .right-col {
+    min-height: auto;
+    padding: 0 !important;
+    width: 100%;
+    padding-bottom: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .right-col {
+    z-index: auto;
+  }
+
+  .header-left {
+    padding: 2rem;
+    min-height: auto;
+    overflow: hidden;
+    z-index: auto;
+    h1, h2 { font-size: 2.8rem; }
+  }
+
+  .left-col-section {
+    padding: 2rem 2rem 1.5rem 2rem;
+    &:nth-last-child(1) {
+      margin-top: 0;
+    }
+  }
+
+  .image-placement-area { height: 200px; }
+  .header-img-box {
+    right: -30px;
+    width: calc(100% + 30px);
+    &::before, &::after { display: none; }
+  }
+
+  .header-photo {
+    top: 20px;
+    right: 20px;
+    width: 140px;
+    height: 175px;
+  }
+
+  .right-section { padding: 2rem; }
+  .right-col > hr { margin: 0 2rem; }
+
+  .expertise-item { width: 33.33%; }
+}
+
+@media (max-width: 767.98px) {
+  .header-left {
+    padding: 1.5rem;
+    h1, h2 { font-size: 2.2rem; }
+  }
+
+  .left-col-section { padding: 1.5rem 1.5rem 1rem 1.5rem; }
+
+  .image-placement-area { height: 160px; }
+  .header-img-box { right: -15px; width: calc(100% + 15px); }
+
+  .header-photo {
+    top: 15px;
+    right: 15px;
+    width: 120px;
+    height: 150px;
+  }
+
+  .right-section { padding: 1.5rem; }
+  .right-col > hr { margin: 0 1.5rem; }
+
+  .expertise-item { width: 50%; }
+}
