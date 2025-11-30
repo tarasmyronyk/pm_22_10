@@ -1,0 +1,21 @@
+/* @mixin (Міксин)
+  Дозволяє повторно використовувати блок стилів.
+  Ми будемо використовувати це для центрування елементів.
+*/
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+
+/*
+  @extend (Placeholder Selector)
+  Групує селектори, які мають спільні властивості.
+  І .expertise-circle, і .hobby-icon є круглими центрованими іконками.
+*/
+%circle-base {
+  border-radius: 50%;
+  @include flex-center(column);
+}

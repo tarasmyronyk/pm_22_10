@@ -1,0 +1,140 @@
+.right-col {
+  background: $light-bg !important;
+  padding: 0 !important;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  overflow: hidden;
+  padding-bottom: $border-thickness !important;
+  padding-right: $border-thickness !important;
+
+  > hr {
+    background-color: $border-grey !important;
+    border: none;
+    margin: 0 3rem;
+    opacity: 1;
+  }
+}
+
+.image-placement-area {
+  position: relative;
+  width: 100%;
+  height: $header-height-desktop;
+  z-index: 2;
+  overflow: visible;
+}
+
+.header-img-box {
+  background: $accent-yellow !important;
+  position: absolute;
+  top: 0;
+  right: -50px;
+  width: calc(100% + 50px);
+  height: 100%;
+  z-index: 1;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+  }
+  &::after {
+    z-index: 900;
+    width: 170px;
+    height: 5px;
+    background: #fff;
+    bottom: 70px;
+    right: 180px;
+  }
+}
+
+.right-section {
+  padding: 3rem;
+  position: relative;
+
+  &.main-content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.section-title.right-col-title {
+  color: $primary-dark;
+  margin-bottom: 1.5rem;
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  max-width: none;
+  position: relative;
+
+  // Вкладеність для псевдо-елемента
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -3rem;
+    width: 100vw;
+    height: 28px;
+    background-color: rgba(150, 150, 150, 0.2);
+  }
+
+  .section-title-line {
+    position: absolute;           // <--- ✅ Робимо абсолютним
+    left: -25px;                  // <--- ✅ Відступ вліво (як у лівій колонці)
+    top: 50%;                     // <--- Центруємо по висоті
+    transform: translateY(-50%);  // <--- Центруємо по висоті
+
+    width: 10px;
+    height: 1.6rem;
+    background: $accent-yellow !important;
+
+    // margin-right видаляємо, він тут не потрібен
+  }
+}
+
+.about-me-text p, .contact-info p {
+  color: $text-grey-dark;
+  font-size: 0.9rem;
+  line-height: 1.5;
+
+}
+
+.contact-info {
+  strong {
+    display: block;
+    font-weight: 600;
+    color: $primary-dark;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: -0.1rem;
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.hobby-item {
+  @include flex-center(column); // Використання @mixin
+  text-align: center;
+}
+
+.hobby-icon {
+  @extend %circle-base; // Використання @extend
+  width: 40px;
+  height: 40px;
+  border: 1px solid $accent-yellow;
+  margin: 0 auto 5px;
+  font-size: 1.2rem;
+  background: #fff;
+
+  i {
+    color: $accent-yellow;
+  }
+}
+
+.hobby-label {
+  color: $text-grey-dark;
+  font-size: 0.75rem;
+}

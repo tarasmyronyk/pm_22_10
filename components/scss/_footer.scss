@@ -1,0 +1,12 @@
+// Стиль для жовтої смуги в правому нижньому куті
+.resume-container::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: 1px;
+  width: 355px;
+  height: 37px;
+  background-color: $accent-yellow;
+  z-index: 9;
+  box-shadow: -1px -1px 3px rgba(0,0,0,0.1);
+}

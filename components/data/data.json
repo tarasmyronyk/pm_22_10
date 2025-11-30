@@ -1,0 +1,12 @@
+{
+  "person": {
+    "firstName": "Michel",
+    "lastName": "Rigaurio"
+  },
+  "expertise": [
+    { "name": "Adobe<br>Photoshop", "class": "ps", "progress": 90 },
+    { "name": "Adobe<br>Illustrator", "class": "ai", "progress": 75 },
+    { "name": "Adobe<br>Indesign", "class": "id", "progress": 60 },
+    { "name": "Figma<br>Sketch", "class": "pp", "progress": 85 }
+  ]
+}
